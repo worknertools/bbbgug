@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>bug10bug10bug10</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Outline Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="mac-desktop">
+    <div class="pixel-outline-app">
+      <div class="pixel-outline-app__titlebar">
+        <div class="pixel-outline-app__dashes pixel-outline-app__dashes--left">
+          <span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span>
+        </div>
+        <span class="pixel-outline-app__title-text">PIXEL OUTLINE TOOL</span>
+        <div class="pixel-outline-app__dashes pixel-outline-app__dashes--right">
+          <span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span><span class="pixel-outline-app__dash"></span>
+        </div>
+      </div>
+      <div class="layout">
+        <section class="panel">
+          <div class="panel__upload">
+            <span class="panel__upload-title">Input image</span>
+            <div class="upload-wrapper">
+              <label for="fileInput" class="panel__upload-block">
+                <img id="uploadPreview" class="panel__upload-preview hidden" alt="Preview" />
+                <svg id="uploadIcon" class="panel__upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" stroke-linejoin="miter">
+                  <path d="M3 21V6h8l2-4h16v19H3Z"></path>
+                  <path d="M5 8h22"></path>
+                </svg>
+              </label>
+              <div class="style-icons">
+                <button id="styleSquare" class="style-button active" data-style="square">■</button>
+                <button id="styleCircle" class="style-button" data-style="circle">●</button>
+                <button id="styleFilled" class="style-button" data-style="filled">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="7" cy="7" r="6" fill="#FF6D00" stroke="#000" stroke-width="1.5"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <input id="fileInput" type="file" accept="image/*" hidden />
+          </div>
+          <p id="error" class="error hidden"></p>
+          <div class="panel__group">
+            <div class="field">
+              <div class="field__label"><span>Pixel size</span><span id="gridSizeVal">10</span></div>
+              <input id="gridSize" class="pixel-slider" type="range" min="1" max="50" value="10" />
+            </div>
+            <div class="field">
+              <div class="field__label"><span>Edge threshold</span><span id="edgeThresholdVal">30</span></div>
+              <input id="edgeThreshold" class="pixel-slider" type="range" min="1" max="230" value="30" />
+            </div>
+            <div class="field">
+              <div class="field__label"><span>Detail boost</span><span id="detailLevelVal">1</span></div>
+              <input id="detailLevel" class="pixel-slider" type="range" min="1" max="30" step="1" value="1" />
+            </div>
+            <div class="field">
+              <div class="field__label"><span>Stroke width</span><span id="lineThicknessVal">1</span></div>
+              <input id="lineThickness" class="pixel-slider" type="range" min="1" max="35" value="1" />
+            </div>
+            <div class="field">
+              <div class="field__label"><span>Outline thickness</span><span id="outlineThicknessVal">5</span></div>
+              <input id="outlineThickness" class="pixel-slider" type="range" min="1" max="10" value="5" />
+            </div>
+            <div class="field field--colors">
+              <div class="field__label"><span>BG Colors</span></div>
+              <div class="color-control">
+                <div class="color-control__swatches">
+                  <button class="color-control__swatch bg-swatch active" style="background:#F6F0FF" data-color="#F6F0FF"></button>
+                  <button class="color-control__swatch bg-swatch" style="background:#FFE7CF" data-color="#FFE7CF"></button>
+                  <button class="color-control__swatch bg-swatch" style="background:#FFF3F3" data-color="#FFF3F3"></button>
+                  <button class="color-control__swatch bg-swatch" style="background:#E0F5FF" data-color="#E0F5FF"></button>
+                  <button class="color-control__swatch bg-swatch" style="background:#E7FFE5" data-color="#E7FFE5"></button>
+                  <input type="color" id="customBgPicker" class="color-control__swatch bg-swatch" value="#FFFFFF">
+                </div>
+              </div>
+            </div>
+            <div class="field field--colors">
+              <div class="field__label"><span>FG Colors</span></div>
+              <div class="color-control">
+                <div class="color-control__swatches">
+                  <button class="color-control__swatch fg-swatch active" style="background:#4A148C" data-color="#4A148C"></button>
+                  <button class="color-control__swatch fg-swatch" style="background:#BF360C" data-color="#BF360C"></button>
+                  <button class="color-control__swatch fg-swatch" style="background:#B71C1C" data-color="#B71C1C"></button>
+                  <button class="color-control__swatch fg-swatch" style="background:#01579B" data-color="#01579B"></button>
+                  <button class="color-control__swatch fg-swatch" style="background:#1B5E20" data-color="#1B5E20"></button>
+                  <input type="color" id="customFgPicker" class="color-control__swatch fg-swatch" value="#000000">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel__actions">
+            <div class="panel__actions-row">
+              <span class="panel__actions-label">Export</span>
+              <span id="resetBtn" class="panel__reset-label">Reset</span>
+            </div>
+            <div class="panel__actions-grid">
+              <div class="panel__action"><button id="exportPNG">PNG</button></div>
+              <div class="panel__action"><button id="exportSVG">SVG</button></div>
+            </div>
+          </div>
+          <div class="panel__descriptor">2025 Type Play Graphic Generator Tool</div>
+        </section>
+        <section class="preview">
+          <div class="preview__canvas" id="previewCanvas">
+            <canvas id="pixelCanvas"></canvas>
+            <div id="emptyState" class="empty-state">
+              <span class="typing-char">G</span><span class="typing-char">R</span><span class="typing-char">A</span><span class="typing-char">P</span><span class="typing-char">H</span><span class="typing-char">I</span><span class="typing-char">C</span>
+              <span class="typing-char"> </span><span class="typing-char"> </span><span class="typing-char"> </span><span class="typing-char"> </span>
+              <span class="typing-char">G</span><span class="typing-char">E</span><span class="typing-char">N</span><span class="typing-char">E</span><span class="typing-char">R</span><span class="typing-char">A</span><span class="typing-char">T</span><span class="typing-char">I</span><span class="typing-char">O</span><span class="typing-char">N</span>
+              <span class="typing-char"> </span><span class="typing-char"> </span><span class="typing-char"> </span><span class="typing-char"> </span>
+              <span class="typing-char">P</span><span class="typing-char">R</span><span class="typing-char">E</span><span class="typing-char">V</span><span class="typing-char">I</span><span class="typing-char">E</span><span class="typing-char">W</span>
+            </div>
+          </div>
+          <p class="preview__notice">
+            The experimental graphic generator easily creates creative graphics, sparks design inspiration, and enhances everyday design workflow efficiency.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
